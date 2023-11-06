@@ -7,35 +7,50 @@ DEGREE_SYBMOL = u"\N{DEGREE SIGN}C"
 def format_temperature(temp):
     """Takes a temperature and returns it in string format with the degrees
         and celcius symbols.
-
     Args:
         temp: A string representing a temperature.
     Returns:
         A string contain the temperature and "degrees celcius."
     """
+      
     return f"{temp}{DEGREE_SYBMOL}"
 
-
-def convert_date(iso_string):
-    """Converts and ISO formatted date into a human readable format.
+"""Converts and ISO formatted date into a human readable format.
 
     Args:
         iso_string: An ISO date string..
     Returns:
         A date formatted like: Weekday Date Month Year e.g. Tuesday 06 July 2021
     """
-    pass
+def convert_date(iso_string):
+   d = datetime.fromisoformat(iso_string) 
+   print(d)
+   print(type(d))
+   converted = (d.strftime("%A %d %B %Y"))
+   return converted
+
+pass
 
 
-def convert_f_to_c(temp_in_farenheit):
-    """Converts an temperature from farenheit to celcius.
+"""Converts an temperature from farenheit to celcius.
 
     Args:
         temp_in_farenheit: float representing a temperature.
     Returns:
         A float representing a temperature in degrees celcius, rounded to 1dp.
     """
-    pass
+
+def convert_f_to_c(temp_in_farenheit):
+    celsius = (temp_in_farenheit - 32) * 5 / 9
+    temps = float(round(celsius, 1))
+    return temps 
+
+
+
+
+
+
+pass
 
 
 def calculate_mean(weather_data):
