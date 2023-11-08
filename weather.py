@@ -33,24 +33,15 @@ pass
 
 
 
-"""Reads a csv file and stores the data in a list.
-
-    Args:
-        csv_file: a string representing the file path to a csv file.
-    Returns:
-        A list of lists, where each sublist is a (non-empty) line in the csv file.
-"""
-
-# Can't figure out how to remove empty list
-    
 def load_data_from_csv(csv_file):
     not_empties = []
     with open(csv_file, "r", encoding="utf-8") as file:
-        data = csv.reader(file)
+        data = list(csv.reader(file))
         for line in data[1:]: 
             if line != []:
-                not_empties.append(line)
-        
+                line1 = int(line[1])
+                line2 = int(line[2])      
+                not_empties.append([line[0], line1, line2])          
         return(not_empties)
 
 pass
@@ -79,43 +70,60 @@ def find_max(weather_data):
 
     pass
 
+"""Outputs a summary for the given weather data.
+
+    Args:
+        weather_data: A list of lists, where each sublist represents a day of weather data.
+    Returns:
+        A string containing the summary information.
+    """
 
 def generate_summary(weather_data):
-    """Outputs a summary for the given weather data.
+        
+# convert_f_to_c
+        
+# # Correct number of days
+#         number = len(weather_data)
+#         print(number)
+        
 
-    Args:
-        weather_data: A list of lists, where each sublist represents a day of weather data.
-    Returns:
-        A string containing the summary information.
-    """
-# low = 
-# lowdate = 
-# high =
-# highdate = 
-# wlow = 
-# whigh = 
+# # low and high are pulling the correct numbers in F 
+#         low = min(map(lambda x: x[1], cweather_data))
 
-#      The lowest temperature will be low°C, and will occur on lowdate
-#     The highest temperature will be high°C, and will occur on highdate.
-#     The average low this week is wlow°C.
-#     The average high this week is whigh°C.
-#     pass
+#         high = max(map(lambda x: x[2], cweather_data))
+#         print(low,high)
 
 
+#         # lowdate =    
+#         d = datetime.fromisoformat(weather_data) 
+#         converted = (d.strftime("%A %d %B %Y"))
+#         lowdate = (lowlist[1])
 
-"""Outputs a daily summary for the given weather data.
+#         highdate = 
+#         d = datetime.fromisoformat(weather_data) 
+#         converted = (d.strftime("%A %d %B %Y"))
 
-    Args:
-        weather_data: A list of lists, where each sublist represents a day of weather data.
-    Returns:
-        A string containing the summary information.
-    """
+         
+        # wlow
+        # whigh = 
+#         summary = "{} day overview \nThe lowest temperature will be {}°C, and will occur on {}\nThe highest temperature will be {}°C, and will occur on {}.\nThe average low this week is {}°C.\nThe average high this week is {}°C.".format(number,low,lowdate, high, highdate, wlow, whigh)
+#         return(summary)
 
-# def generate_daily_summary(weather_data):    
-#     d= datetime(weather_data)
-#     date = (d.strftime("%A %d %B %Y"))
-#     mint = (f"Minimum Temperature:"(min(weather_data)))
-#     maxt = (f"Maximum Temperature:")
-#     final = date, mint, maxt 
-#     return final
-#     pass
+# pass
+
+
+# """Outputs a daily summary for the given weather data.
+
+#     Args:
+#         weather_data: A list of lists, where each sublist represents a day of weather data.
+#     Returns:
+#         A string containing the summary information.
+#     """
+
+# # def generate_daily_summary(weather_data):    
+
+# #     date = 
+# #     min = "Minimum Temperature:"
+# #     max = "Maximum Temperature:"
+
+# #     pass

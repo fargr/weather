@@ -1,26 +1,37 @@
-# # def convert_f_to_c(temp_in_farenheit):
-# #     celsius = (temp_in_farenheit - 32) * 5 / 9
-# #     temps = float(round(celsius, 1))
-# #     return temps 
-
-# # def convert_f_to_c(temp_in_farenheit):
-# #     celsius = (temp_in_farenheit - 32) * 5 / 9
-# #     temps = float(round(celsius, 1))
-# #     return (temps)
+# def generate_daily_summary(weather_data):    
+#     d= datetime(weather_data)
+#     date = (d.strftime("%A %d %B %Y"))
+#     mint = ("Minimum Temperature:"(min(weather_data)))
+#     maxt = ("Maximum Temperature:")
+#     final = date, mint, maxt 
+#     print (final)
 
 
-# # def calculate_mean(weather_data):
-# #     weather_data = ([int(x) for x in weather_data])
-# #     data = sum(weather_data) / len(weather_data) 
-# #     mean = float(round(data, 1))
-# #     print (mean)
+# celsius = ((float(77)) - 32) * 5 / 9
+# print(celsius)
 
-# def load_data_from_csv(csv_file):
-#     with open(csv_file, encoding="utf-8") as file:
-#         # csv_reader = csv.reader(file) 
-#         # list_of_csv = list(csv_reader)
-#         data = list(file)
-#         filtered = ([x for x in data if x])
-#     return(filtered)
 
-print("30" (u"\N{DEGREE SIGN}C"))
+# summary = "5 day overview \nThe lowest temperature will be {low}°C, and will occur on {low}\nThe highest temperature will be {high}°C, and will occur on {highdate}.\nThe average low this week is {wlow}°C.\nThe average high this week is {whigh}°C."
+# print(summary)
+
+# low = 5
+# lowdate = "tuesday"
+# high = 3
+# highdate = "friday"
+# wlow = 19
+# whigh = 27
+# summary = "5 day overview \nThe lowest temperature will be {}°C, and will occur on {}\nThe highest temperature will be {}°C, and will occur on {}.\nThe average low this week is {}°C.\nThe average high this week is {}°C.".format(low,lowdate, high, highdate, wlow, whigh)
+# print(summary)
+
+# def generate_summary(weather_data):
+#     for line in weather_data[1:]: 
+#         lowdata = int(line[1])
+#         highdata = int(line[2]) 
+#         degrees = lowdata + highdata    
+#         return degrees
+    
+#     celsius = ((int(degrees)) - 32) * 5 / 9
+#     print(celsius)
+def generate_summary(weather_data):
+    high = max(map(lambda x: x[3], weather_data))
+    print(high)
