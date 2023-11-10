@@ -130,7 +130,7 @@ def generate_summary(weather_data):
     whigh_round = round(whigh, 1)
     
 
-    summary ="{} Day Overview \nThe lowest temperature will be {}°C, and will occur on {}. \nThe highest temperature will be {}°C, and will occur on {}. \nThe average low this week is {}°C. \nThe average high this week is {}°C.".format(number,low,converted_dl, high, converted_dh, wlow_round, whigh_round)
+    summary =("{} Day Overview\n  The lowest temperature will be {}°C, and will occur on {}.\n  The highest temperature will be {}°C, and will occur on {}.\n  The average low this week is {}°C.\n  The average high this week is {}°C.\n".format(number,low,converted_dl,high, converted_dh,wlow_round,whigh_round))
     return summary
 
 # # pass
@@ -175,23 +175,17 @@ def generate_daily_summary(weather_data):
 
 
 # summarize
-
-    all_lists = con_dlist + c_lows + c_highs
-    res = list(zip(con_dlist, c_lows, c_highs[3:]))
-
-    numbers = len(all_lists)
-    divide = numbers / 3 
-    text = "{} \nMinimum Temperature: {}°C \nMaximum Temperature: {}°C".format(res[0][0], res[0][1], res[0][2])
-
-    # for x in all_lists:
-    #     for y in x:
-    #         print(y)
     
+    c_highs_str = list(c_highs)
+    c_lows_str = list(c_lows)
+
+    n = len(con_dlist)
+    for i in range(n):
+        date = con_dlist[i]
+        low = c_lows_str[i]
+        high = c_highs_str[i]
+        summary = ("---- {} ----\n  Minimum Temperature: {}°C\n  Maximum Temperature: {}°C\n\n".format(date, low, high))
+        return summary
  
-    # # while 
-    # # # # while the 
-    # #     return text
-    
-    print(text)
 
     pass
