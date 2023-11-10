@@ -80,50 +80,118 @@ def find_max(weather_data):
 
 def generate_summary(weather_data):
         
-# convert_f_to_c
+# convert_f_to_c. Lows. Highs
+    f_lows = [item[1] for item in weather_data]
+    c_lows = []
+    for f in f_lows: 
+        cl =((f - 32) * 5 / 9)
+        cl_round = round(cl, 1)
+        c_lows.append(cl_round)
+
+    f_highs = [item[2] for item in weather_data]
+    c_highs = []
+    for f in f_highs: 
+        ch =((f - 32) * 5 / 9)
+        ch_round = round(ch, 1)
+        c_highs.append(ch_round)
+
+
+# Correct number of days
+    number = len(weather_data)
+    
+
+# low and high are pulling the correct numbers in C.
+    low = min(c_lows)
+
+    high = max(c_highs)
+
+
+# find the number in the list of the lowest f number
+# use that number and pull the same number for the isodata
+    
+    l_index = c_lows.index(low)
+    l_iso = weather_data[l_index][0]
+    d_l = datetime.fromisoformat(l_iso) 
+    converted_dl = (d_l.strftime("%A %d %B %Y"))
         
-# # Correct number of days
-#         number = len(weather_data)
-#         print(number)
         
+    h_index = c_highs.index(high)
+    h_iso = weather_data[h_index][0]
+    d_h = datetime.fromisoformat(h_iso) 
+    converted_dh = (d_h.strftime("%A %d %B %Y"))
+    
 
-# # low and high are pulling the correct numbers in F 
-#         low = min(map(lambda x: x[1], cweather_data))
+# Weekly average low and high
+    wlow = sum(c_lows) / len(c_lows) 
+    wlow_round = round(wlow, 1)
+    
+    
+    whigh = sum(c_highs) / len(c_highs) 
+    whigh_round = round(whigh, 1)
+    
 
-#         high = max(map(lambda x: x[2], cweather_data))
-#         print(low,high)
+    summary ="{} Day Overview \nThe lowest temperature will be {}°C, and will occur on {}. \nThe highest temperature will be {}°C, and will occur on {}. \nThe average low this week is {}°C. \nThe average high this week is {}°C.".format(number,low,converted_dl, high, converted_dh, wlow_round, whigh_round)
+    return summary
 
-
-#         # lowdate =    
-#         d = datetime.fromisoformat(weather_data) 
-#         converted = (d.strftime("%A %d %B %Y"))
-#         lowdate = (lowlist[1])
-
-#         highdate = 
-#         d = datetime.fromisoformat(weather_data) 
-#         converted = (d.strftime("%A %d %B %Y"))
-
-         
-        # wlow
-        # whigh = 
-#         summary = "{} day overview \nThe lowest temperature will be {}°C, and will occur on {}\nThe highest temperature will be {}°C, and will occur on {}.\nThe average low this week is {}°C.\nThe average high this week is {}°C.".format(number,low,lowdate, high, highdate, wlow, whigh)
-#         return(summary)
-
-# pass
+# # pass
 
 
-# """Outputs a daily summary for the given weather data.
+"""Outputs a daily summary for the given weather data.
 
-#     Args:
-#         weather_data: A list of lists, where each sublist represents a day of weather data.
-#     Returns:
-#         A string containing the summary information.
-#     """
+    Args:
+        weather_data: A list of lists, where each sublist represents a day of weather data.
+    Returns:
+        A string containing the summary information.
+    """
 
-# # def generate_daily_summary(weather_data):    
+def generate_daily_summary(weather_data):    
 
-# #     date = 
-# #     min = "Minimum Temperature:"
-# #     max = "Maximum Temperature:"
+# Make a loop that shows the date and min and max until loop is exhausted
 
-# #     pass
+# Pulls all converted dates
+    d_list = [item[0] for item in weather_data]
+    con_dlist = []
+    for d_list in d_list: 
+        d_l = datetime.fromisoformat(d_list) 
+        converted_dl = (d_l.strftime("%A %d %B %Y"))
+        con_dlist.append(converted_dl)
+
+# List of lows in c
+    min_list = [item[1] for item in weather_data]
+    c_lows = []
+    for f in min_list: 
+        cl =((f - 32) * 5 / 9)
+        cl_round = round(cl, 1)
+        c_lows.append(cl_round)
+
+
+# List of highs in c
+    max_list = [item[2] for item in weather_data]
+    c_highs= []
+    for f in max_list: 
+        ch =((f - 32) * 5 / 9)
+        ch_round = round(ch, 1)
+        c_highs.append(ch_round)
+
+
+# summarize
+
+    all_lists = con_dlist + c_lows + c_highs
+    res = list(zip(con_dlist, c_lows, c_highs[3:]))
+
+    numbers = len(all_lists)
+    divide = numbers / 3 
+    text = "{} \nMinimum Temperature: {}°C \nMaximum Temperature: {}°C".format(res[0][0], res[0][1], res[0][2])
+
+    # for x in all_lists:
+    #     for y in x:
+    #         print(y)
+    
+ 
+    # # while 
+    # # # # while the 
+    # #     return text
+    
+    print(text)
+
+    pass
