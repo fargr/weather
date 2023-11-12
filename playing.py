@@ -30,8 +30,9 @@
 #         degrees = lowdata + highdata    
 #         return degrees
     
-#     celsius = ((int(degrees)) - 32) * 5 / 9
-#     print(celsius)
-def generate_summary(weather_data):
-    high = max(map(lambda x: x[3], weather_data))
-    print(high)
+# #     celsius = ((int(degrees)) - 32) * 5 / 9
+# #     print(celsius)
+# def generate_summary(weather_data):
+#     high = max(map(lambda x: x[3], weather_data))
+#     print(high)
+

@@ -133,59 +133,20 @@ def generate_summary(weather_data):
     summary =("{} Day Overview\n  The lowest temperature will be {}°C, and will occur on {}.\n  The highest temperature will be {}°C, and will occur on {}.\n  The average low this week is {}°C.\n  The average high this week is {}°C.\n".format(number,low,converted_dl,high, converted_dh,wlow_round,whigh_round))
     return summary
 
-# # pass
+pass
 
-
-"""Outputs a daily summary for the given weather data.
-
-    Args:
-        weather_data: A list of lists, where each sublist represents a day of weather data.
-    Returns:
-        A string containing the summary information.
-    """
 
 def generate_daily_summary(weather_data):    
-
-# Make a loop that shows the date and min and max until loop is exhausted
-
-# Pulls all converted dates
-    d_list = [item[0] for item in weather_data]
-    con_dlist = []
-    for d_list in d_list: 
-        d_l = datetime.fromisoformat(d_list) 
-        converted_dl = (d_l.strftime("%A %d %B %Y"))
-        con_dlist.append(converted_dl)
-
-# List of lows in c
-    min_list = [item[1] for item in weather_data]
-    c_lows = []
-    for f in min_list: 
-        cl =((f - 32) * 5 / 9)
-        cl_round = round(cl, 1)
-        c_lows.append(cl_round)
-
-
-# List of highs in c
-    max_list = [item[2] for item in weather_data]
-    c_highs= []
-    for f in max_list: 
-        ch =((f - 32) * 5 / 9)
-        ch_round = round(ch, 1)
-        c_highs.append(ch_round)
-
-
-# summarize
+    summary = ''    
+    for row in weather_data:
+        date = convert_date(row[0])
+        low = convert_f_to_c(row[1])
+        c_low = format_temperature(low)
+        high = convert_f_to_c(row[2])
+        c_high = format_temperature(high)
+        summary += ("---- {} ----\n  Minimum Temperature: {}\n  Maximum Temperature: {}\n\n".format(date, c_low, c_high))    
     
-    c_highs_str = list(c_highs)
-    c_lows_str = list(c_lows)
-
-    n = len(con_dlist)
-    for i in range(n):
-        date = con_dlist[i]
-        low = c_lows_str[i]
-        high = c_highs_str[i]
-        summary = ("---- {} ----\n  Minimum Temperature: {}°C\n  Maximum Temperature: {}°C\n\n".format(date, low, high))
-        return summary
+    return summary
  
 
     pass
